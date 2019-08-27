@@ -1,0 +1,126 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Thu Aug 22 12:55:46 2019
+
+@author: gustavo
+"""
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+#Crear dominio
+n = np.arange(1,101)
+#Constantes
+a1 = 3 
+b1 = 5
+a2 = 3.2
+b2 = 4.5
+
+'''Function n^a'''
+power_function1 = np.power(n, a1)
+power_function2 = np.power(n, a2)
+
+'''Function (logn)^b'''
+powered_log_function1 = np.power(np.log10(n), b1)
+powered_log_function2 = np.power(np.log10(n), b2) 
+
+'''Function logn^b'''
+log_function1 = np.log10(np.power(n, b1))
+log_function2 = np.log10(np.power(n, b2))
+
+'''Function a^n'''
+exp_function1 = np.zeros(100)
+exp_function2 = np.zeros(100)
+for i in range(0,100) :
+    exp_function1[i] = np.power(a1, i+1) 
+    exp_function2[i] = np.power(a2, i+1)
+
+'''Plotting'''
+font_title = {'family' : 'serif', 
+        'color' : 'darkred', 
+        'weight' : 'normal',
+        'size' : 16}
+
+font_equations = {'family' : 'serif', 
+                  'color' : 'black',
+                  'weight' : 'normal',
+                  'size' : 12}
+
+font_labels = {'family' : 'serif', 
+                  'color' : 'black',
+                  'weight' : 'bold',
+                  'size' : 12}
+'''First case'''
+plt.title('Primera comparacion: a = 3 y b = 5', fontdict = font_title)
+plt.text(70, 50000, r'$\ [log(n)]^b$', fontdict = font_equations)
+plt.text(75, 600000, r'$\ n^a$', fontdict = font_equations)
+plt.xlabel('Numero de entradas (n)', fontdict = font_labels)
+plt.ylabel('Funcion de tiempo T(n)', fontdict = font_labels)
+plt.plot(n, power_function1, 'b')
+plt.plot(n, powered_log_function1, 'r')
+
+plt.figure()
+plt.title('Segunda comparacion: a = 3 y b = 5', fontdict = font_title)
+plt.text(50, 25, r'$\ [log(n)]^b$', fontdict = font_equations)
+plt.text(60, 12, r'$\ log(n^b)$', fontdict = font_equations)
+plt.xlabel('Numero de entradas (n)', fontdict = font_labels)
+plt.ylabel('Funcion de tiempo T(n)', fontdict = font_labels)
+plt.plot(n, log_function1, 'b')
+plt.plot(n, powered_log_function1, 'r')
+
+plt.figure()
+plt.title('Segunda comparacion: a = 3 y b = 5', fontdict = font_title)
+plt.text(50, 10000, r'$\ [log(n)]^b$', fontdict = font_equations)
+plt.text(80, 10000, r'$\ log(n^b)$', fontdict = font_equations)
+plt.text(75, 600000, r'$\ n^a$', fontdict = font_equations)
+plt.xlabel('Numero de entradas (n)', fontdict = font_labels)
+plt.ylabel('Funcion de tiempo T(n)', fontdict = font_labels)
+plt.plot(n, log_function1, 'b')
+plt.plot(n, powered_log_function1, 'r')
+plt.plot(n, power_function1, 'g')
+
+plt.figure()
+plt.title('Tercera comparacion: a = 3 y b = 5', fontdict = font_title)
+plt.xlabel('Numero de entradas (n)', fontdict = font_labels)
+plt.ylabel('Funcion de tiempo T(n)', fontdict = font_labels)
+plt.text(20, -7.5e18, r'$\ a^n$', fontdict = font_equations)
+plt.plot(n, exp_function1, 'b')
+
+'''Second case'''
+plt.title('Primera comparacion: a = 3.2 y b = 4.5', fontdict = font_title)
+plt.text(70, 50000, r'$\ [log(n)]^b$', fontdict = font_equations)
+plt.text(30, 5.0e18, r'$\ n^a$', fontdict = font_equations)
+plt.xlabel('Numero de entradas (n)', fontdict = font_labels)
+plt.ylabel('Funcion de tiempo T(n)', fontdict = font_labels)
+plt.plot(n, power_function2, 'b')
+plt.plot(n, powered_log_function2, 'r')
+
+plt.figure()
+plt.title('Segunda comparacion: a = 3.2 y b = 4.5', fontdict = font_title)
+plt.text(50, 17, r'$\ [log(n)]^b$', fontdict = font_equations)
+plt.text(60, 5, r'$\ log(n^b)$', fontdict = font_equations)
+plt.xlabel('Numero de entradas (n)', fontdict = font_labels)
+plt.ylabel('Funcion de tiempo T(n)', fontdict = font_labels)
+plt.plot(n, log_function2, 'b')
+plt.plot(n, powered_log_function2, 'r')
+
+plt.figure()
+plt.title('Tercera comparacion: a = 3.2 y b = 4.5', fontdict = font_title)
+plt.text(50, 10000, r'$\ [log(n)]^b$', fontdict = font_equations)
+plt.text(80, 10000, r'$\ log(n^b)$', fontdict = font_equations)
+plt.text(75, 600000, r'$\ n^a$', fontdict = font_equations)
+plt.xlabel('Numero de entradas (n)', fontdict = font_labels)
+plt.ylabel('Funcion de tiempo T(n)', fontdict = font_labels)
+plt.plot(n, log_function2, 'b')
+plt.plot(n, powered_log_function2, 'r')
+plt.plot(n, power_function2, 'g')
+
+plt.figure()
+plt.title('Cuarta comparacion: a = 3.2 y b = 4.5', fontdict = font_title)
+plt.xlabel('Numero de entradas (n)', fontdict = font_labels)
+plt.ylabel('Funcion de tiempo T(n)', fontdict = font_labels)
+plt.text(20, -7.5e18, r'$\ a^n$', fontdict = font_equations)
+plt.plot(n, exp_function2, 'b')
+
+plt.show()    
